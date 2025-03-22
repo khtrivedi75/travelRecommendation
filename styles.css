@@ -166,7 +166,7 @@ button:hover {
 .social-bar {
     position: fixed;
     right: 10px; /* Positioned on the right side of the page */
-    bottom: 25px; /* Just above the footer */
+    bottom: 60px; /* Just above the footer */
     display: flex;
     flex-direction: column;
     gap: 8px;
