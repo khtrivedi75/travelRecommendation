@@ -71,7 +71,7 @@ section p {
     text-align: center;
 }
 
-/* Company Info Section Styling */
+/* Company Info Section Styling (About Us) */
 .company-info p {
     font-size: 1.2em;
     margin-bottom: 40px;
@@ -79,7 +79,7 @@ section p {
     color: black; /* Black font for the company introduction */
 }
 
-/* Team Section Styling */
+/* Team Section Styling (About Us) */
 .team-info {
     text-align: center;
     margin-top: 30px;
@@ -91,7 +91,7 @@ section p {
     color: black; /* Black color for section title */
 }
 
-/* Horizontal Team Members Layout */
+/* Horizontal Team Members Layout (About Us) */
 .team {
     display: flex;
     justify-content: center;
@@ -101,7 +101,7 @@ section p {
 
 .team-member {
     text-align: center;
-    background: rgba(205, 222, 237, 0.6); /* Slight background to make team member box stand out */
+    background: rgba(212, 238, 245, 0.6); /* Slight background to make team member box stand out */
     padding: 20px;
     border-radius: 10px;
     width: 200px; /* Fixed width for consistency */
@@ -115,7 +115,76 @@ section p {
 
 .team-member p {
     font-size: 1em;
-    color: #6e6868; /* Lighter text for the role */
+    color: #bbb; /* Lighter text for the role */
+}
+
+/* Contact Us - Form Section */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-size: 1em;
+    font-weight: bold;
+    color: black; /* Black font for label text */
+}
+
+input, textarea {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    resize: none;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: flex-start; /* Align the button to the left */
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Social Media Icons on the Right Side (Above Footer) */
+.social-bar {
+    position: fixed;
+    right: 10px; /* Positioned on the right side of the page */
+    bottom: 60px; /* Just above the footer */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    background: rgba(212, 238, 245, 0.6);
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    background: rgba(0, 0, 0, 0.9);
 }
 
 /* Footer Styling */
