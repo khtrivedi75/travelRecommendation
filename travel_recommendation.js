@@ -1,16 +1,12 @@
-/* script.js */
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Script Loaded");
 });
 
-// Slide effect for search
-function activateSearchEffect() {
-    document.body.classList.add("search-active"); // Add class to activate the slide effect
-}
-
+// Function to show search results
 function searchPlaces() {
     let query = document.getElementById("search").value.trim().toLowerCase();
-    let resultsContainer = document.getElementById("results");
+    let resultsContainer = document.getElementById("results-container");
+    let mainContent = document.querySelector("main");
     resultsContainer.innerHTML = ""; // Clear previous results
 
     if (query === "") {
@@ -18,12 +14,16 @@ function searchPlaces() {
         return;
     }
 
-    // Activate the slide effect on search
-    activateSearchEffect();
+    // Show the search results container and slide content
+    resultsContainer.style.display = "block";
+    resultsContainer.style.transform = "translateX(0)";
+    mainContent.style.transform = "translateX(-100%)"; // Slide the main content left
 
+    // Fetch data
     fetch("travel_recommendation_api.json")
         .then(response => response.json())
         .then(data => {
+            console.log("Fetched Data:", data);  // Log data to check if it's fetched correctly
             let matchedPlaces = [];
 
             // Convert query into category mapping
@@ -47,7 +47,7 @@ function searchPlaces() {
             }
 
             if (matchedPlaces.length > 0) {
-                matchedPlaces.slice(0, 2).forEach(place => {
+                matchedPlaces.slice(0, 5).forEach(place => {
                     let placeElement = document.createElement("div");
                     placeElement.classList.add("place-card");
                     placeElement.innerHTML = `
@@ -64,8 +64,10 @@ function searchPlaces() {
         .catch(error => console.error("Error fetching data:", error));
 }
 
-// Clear search and results
+// Clear search and reset layout
 function clearResults() {
     document.getElementById("search").value = "";
-    document.getElementById("results").innerHTML = "";
+    document.getElementById("results-container").innerHTML = "";
+    document.getElementById("results-container").style.display = "none";
+    document.querySelector("main").style.transform = "translateX(0)"; // Reset main content position
 }
