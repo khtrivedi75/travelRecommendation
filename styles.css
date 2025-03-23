@@ -38,38 +38,84 @@ nav {
     padding: 10px 20px;
 }
 
+/* Logo Styling */
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: white;
+    flex-shrink: 0; /* Prevents logo from shrinking */
 }
 
+/* Navigation Menu */
 .nav-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    flex-grow: 1; /* Allows it to take available space */
+    justify-content: center; /* Centers navigation links */
 }
 
 ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    padding: 0;
+}
+
+ul li {
+    position: relative;
 }
 
 ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
 }
 
-/* Search and reset button container */
+ul li a:hover {
+    color: #f0a500;
+}
+
+/* Dropdown Menu for Extra Pages */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Search Bar & Reset Button */
 .search-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
-/* Search input */
 #search {
     padding: 8px;
     font-size: 1em;
@@ -78,25 +124,26 @@ ul li a {
     height: 34px;
 }
 
-/* Button Styling (Search and Reset buttons) */
+/* Buttons */
 button {
-    font-size: 0.7em;         /* Smaller font size */
-    padding: 4px 8px;         /* Reduced padding */
+    font-size: 0.8em;
+    padding: 6px 12px;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    height: 28px;             /* Smaller height */
-    display: flex;            /* Flex container to center text */
-    justify-content: center;  /* Center text horizontally */
-    align-items: center;      /* Center text vertically */
-    text-align: center;       /* Ensure text is centered in the button */
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 button:hover {
     background-color: #555;
 }
+
 
 /* Header Styling */
 header {
