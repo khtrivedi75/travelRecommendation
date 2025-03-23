@@ -38,23 +38,6 @@ nav {
     padding: 10px 20px;
 }
 
-/* Logo Styling */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    flex-shrink: 0; /* Prevents logo from shrinking */
-}
-
-/* Navigation Menu */
-.nav-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-grow: 1; /* Allows it to take available space */
-    justify-content: center; /* Centers navigation links */
-}
-
 ul {
     list-style: none;
     display: flex;
@@ -108,22 +91,6 @@ ul li a:hover {
     display: block;
 }
 
-/* Search Bar & Reset Button */
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-
-#search {
-    padding: 8px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 34px;
-}
-
 /* Buttons */
 button {
     font-size: 0.8em;
@@ -143,7 +110,6 @@ button {
 button:hover {
     background-color: #555;
 }
-
 
 /* Header Styling */
 header {
@@ -384,7 +350,7 @@ nav {
 }
 
 .search-bar button:hover {
-    background-color: #fff;
+    background-color: #9d9999;
 }
 
 /* Add spacing for the dropdown */
