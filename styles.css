@@ -229,15 +229,9 @@ footer {
     background: rgba(0, 0, 0, 0.9);
 }
 
-#results {
-    background-image: url('your-background-image.jpg'); /* Keep background image */
-    background-size: cover;
-    padding: 20px;
-}
-
 .result-item {
     display: flex;
-    align-items: center; /* Aligns image and text side by side */
+    align-items: flex-start; /* Align items from the top */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     border-radius: 10px;
     padding: 15px;
@@ -254,5 +248,22 @@ footer {
 }
 
 .result-text {
+    display: flex;
+    flex-direction: column; /* Stack city name and description */
+    justify-content: flex-start; /* Align text from top */
     max-width: 600px; /* Prevents text from stretching too much */
 }
+
+.result-text h2 {
+    text-align: center; /* Centers city name */
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    width: 100%; /* Ensures it spans full width */
+}
+
+.result-text p {
+    text-align: justify; /* Aligns description text neatly */
+    font-size: 1em;
+    line-height: 1.5;
+}
+
