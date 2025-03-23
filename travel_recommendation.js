@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Script Loaded");
 });
 
+// Slide effect for search
+function activateSearchEffect() {
+    document.body.classList.add("search-active"); // Add class to activate the slide effect
+}
+
 function searchPlaces() {
     let query = document.getElementById("search").value.trim().toLowerCase();
     let resultsContainer = document.getElementById("results");
@@ -12,6 +17,9 @@ function searchPlaces() {
         resultsContainer.innerHTML = "<p>Please enter a search keyword.</p>";
         return;
     }
+
+    // Activate the slide effect on search
+    activateSearchEffect();
 
     fetch("travel_recommendation_api.json")
         .then(response => response.json())
