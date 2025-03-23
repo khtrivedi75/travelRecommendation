@@ -1,22 +1,45 @@
 /* script.js */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     console.log("Script Loaded");
 });
 
 function searchPlaces() {
-    let query = document.getElementById("search").value.toLowerCase();
+    let query = document.getElementById("search").value.trim().toLowerCase();
     let resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = "";
+    resultsContainer.innerHTML = ""; // Clear previous results
+
+    if (query === "") {
+        resultsContainer.innerHTML = "<p>Please enter a search keyword.</p>";
+        return;
+    }
 
     fetch("travel_recommendation_api.json")
         .then(response => response.json())
         .then(data => {
-            let filteredResults = data.filter(place => 
-                place.category.toLowerCase().includes(query)
-            );
-            
-            if (filteredResults.length > 0) {
-                filteredResults.forEach(place => {
+            let matchedPlaces = [];
+
+            // Convert query into category mapping
+            if (["beach", "beaches"].includes(query)) {
+                matchedPlaces = data.beaches;
+            } else if (["temple", "temples"].includes(query)) {
+                matchedPlaces = data.temples;
+            } else {
+                // Check if query matches a country or city
+                data.countries.forEach(country => {
+                    if (country.name.toLowerCase().includes(query)) {
+                        matchedPlaces = matchedPlaces.concat(country.cities);
+                    } else {
+                        country.cities.forEach(city => {
+                            if (city.name.toLowerCase().includes(query)) {
+                                matchedPlaces.push(city);
+                            }
+                        });
+                    }
+                });
+            }
+
+            if (matchedPlaces.length > 0) {
+                matchedPlaces.slice(0, 2).forEach(place => {
                     let placeElement = document.createElement("div");
                     placeElement.classList.add("place-card");
                     placeElement.innerHTML = `
@@ -27,12 +50,13 @@ function searchPlaces() {
                     resultsContainer.appendChild(placeElement);
                 });
             } else {
-                resultsContainer.innerHTML = "<p>No results found.</p>";
+                resultsContainer.innerHTML = "<p>No results found for your search.</p>";
             }
         })
         .catch(error => console.error("Error fetching data:", error));
 }
 
+// Clear search and results
 function clearResults() {
     document.getElementById("search").value = "";
     document.getElementById("results").innerHTML = "";
